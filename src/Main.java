@@ -19,6 +19,7 @@ public class Main {
             System.out.println("File not found");
         }
 
+        int[] numOfEachType = {0, 0, 0, 0, 0, 0, 0};
         System.out.println(fileData);
         String[] lines = fileData.split("\n");
 
@@ -28,9 +29,17 @@ public class Main {
             hands[4] = bid[0];
             int bidValue = Integer.parseInt(bid[1]);
             Hand hand1 = new Hand(hands, bidValue);
-            String handResult = hand1.calculate();
-            System.out.println(handResult);
+            int handResult = hand1.calculateHand();
+            numOfEachType[handResult-1] = numOfEachType[handResult-1] + 1;
         }
+        System.out.println("Number of five of a kind hands: " + numOfEachType[6]);
+        System.out.println("Number of four of a kind hands: " + numOfEachType[5]);
+        System.out.println("Number of full houses: " + numOfEachType[4]);
+        System.out.println("Number of three of a kind hands: " + numOfEachType[3]);
+        System.out.println("Number of two pairs: " + numOfEachType[2]);
+        System.out.println("Number of one pairs: " + numOfEachType[1]);
+        System.out.println("Number of high cards: " + numOfEachType[0]);
+
     }
 
 }
