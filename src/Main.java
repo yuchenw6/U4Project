@@ -18,17 +18,24 @@ public class Main {
         catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
-
+        String[] cardType = {"Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6", "5", "4", "3", "2"};
         int[] numOfEachType = {0, 0, 0, 0, 0, 0, 0};
         System.out.println(fileData);
         String[] lines = fileData.split("\n");
-
+        Hand[] allHand = new Hand[lines.length];
+        int[] power = new int[lines.length];
+        for (int i = 0; i< lines.length; i++){
+            power[i] = 1;
+        }
+        int counter = 0;
         for (String line : lines) {
             String[] hands = line.split(",");
             String[] bid = hands[4].split("\\|");
             hands[4] = bid[0];
             int bidValue = Integer.parseInt(bid[1]);
             Hand hand1 = new Hand(hands, bidValue);
+            allHand[counter] = hand1;
+            counter++;
             int handResult = hand1.calculateHand();
             numOfEachType[handResult-1] = numOfEachType[handResult-1] + 1;
         }
@@ -40,6 +47,41 @@ public class Main {
         System.out.println("Number of one pairs: " + numOfEachType[1]);
         System.out.println("Number of high cards: " + numOfEachType[0]);
 
-    }
 
+        for (int i = 0; i < lines.length; i++){
+            Hand currentHand = allHand[i];
+            for (int a = 0; a < lines.length; a++){
+                if (currentHand.getHandLevel() > allHand[a].getHandLevel()){
+                    power[i]++;
+                } else if (currentHand.getHandLevel() == allHand[a].getHandLevel()){
+                    String[] currentList = currentHand.getHand();
+                    String[] nextList = allHand[a].getHand();
+
+                    for (int b = 0; b < 5; b++){
+                        int currentCardStrength = 0;
+                        int nextCardStrength = 0;
+                        for (int c = 0; c < cardType.length; c++){
+                            if (currentList[b].equals(cardType[c])){
+                                currentCardStrength = c;
+                            }
+                            if (nextList[b].equals(cardType[c])){
+                                nextCardStrength = c;
+                            }
+                        }
+                        if (currentCardStrength < nextCardStrength){
+                            power[i]++;
+                            b = 5;
+                        } else if (currentCardStrength > nextCardStrength){
+                            b = 5;
+                        }
+                    }
+                }
+            }
+        }
+        int totalBidResult = 0;
+        for (int i = 0; i < power.length; i++){
+            totalBidResult += power[i] * allHand[i].getBid();
+        }
+        System.out.println("Total Bid Value: " + totalBidResult);
+    }
 }

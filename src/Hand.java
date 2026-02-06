@@ -65,4 +65,16 @@ public class Hand {
             return 1;
         }
     }
+
+    public String[] getHand(){
+        return hand;
+    }
+
+    public int getBid() {
+        return bid;
+    }
+
+    public int getHandLevel(){
+        return handLevel;
+    }
 }
