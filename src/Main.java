@@ -40,8 +40,8 @@ public class Main {
             numOfEachType[handResult-1] = numOfEachType[handResult-1] + 1;
         }
         System.out.println("Number of five of a kind hands: " + numOfEachType[6]);
-        System.out.println("Number of four of a kind hands: " + numOfEachType[5]);
         System.out.println("Number of full houses: " + numOfEachType[4]);
+        System.out.println("Number of four of a kind hands: " + numOfEachType[5]);
         System.out.println("Number of three of a kind hands: " + numOfEachType[3]);
         System.out.println("Number of two pairs: " + numOfEachType[2]);
         System.out.println("Number of one pairs: " + numOfEachType[1]);
