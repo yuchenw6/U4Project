@@ -18,7 +18,7 @@ public class Main {
         catch (FileNotFoundException e) {
             System.out.println("File not found");
         }
-        String[] cardType = {"Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6", "5", "4", "3", "2"};
+        String[] cardType = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
         int[] numOfEachType = {0, 0, 0, 0, 0, 0, 0};
         System.out.println(fileData);
         String[] lines = fileData.split("\n");
@@ -68,10 +68,10 @@ public class Main {
                                 nextCardStrength = c;
                             }
                         }
-                        if (currentCardStrength < nextCardStrength){
+                        if (currentCardStrength > nextCardStrength){
                             power[i]++;
                             b = 5;
-                        } else if (currentCardStrength > nextCardStrength){
+                        } else if (currentCardStrength < nextCardStrength){
                             b = 5;
                         }
                     }
