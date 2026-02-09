@@ -7,6 +7,7 @@ public class Hand {
     private String[] hand;
     private int bid;
     private int handLevel;
+    private String[] cardType = {"Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6", "5", "4", "3", "2"};
     public Hand(String[] hand, int bid){
         this.hand = hand;
         this.bid = bid;
@@ -16,7 +17,6 @@ public class Hand {
 
     public int calculateHand() {
         int same = 0;
-        String[] cardType = {"Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6", "5", "4", "3", "2"};
         int[] cardNum = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0; i < hand.length; i++) {
             for (int a = 0; a < cardType.length; a++) {
@@ -77,4 +77,21 @@ public class Hand {
     public int getHandLevel(){
         return handLevel;
     }
+
+    public int calculateJack(){
+        int highestLevel = 0;
+        String[] originalList = new String[5];
+        for (int i = 0; i < 5; i++){
+            originalList[i] = hand[i];
+        }
+        for (int i = 0; i < cardType.length; i++){
+            for (int a = 0; a < 5; a++){
+                if (hand[a].equals("Jack")){
+                    hand[a] = cardType[i];
+                }
+            }
+            int calculateHand();
+        }
+    }
+
 }
