@@ -83,5 +83,10 @@ public class Main {
             totalBidResult += power[i] * allHand[i].getBid();
         }
         System.out.println("Total Bid Value: " + totalBidResult);
+
+        for (int i = 0; i < allHand.length; i++){
+            int jackPower = allHand[i].calculateJack();
+            System.out.println(jackPower);
+        }
     }
 }
