@@ -98,6 +98,7 @@ public class Hand {
                 hand[b] = originalList[b];
             }
         }
+        handLevel = highestLevel;
         return highestLevel;
     }
 
