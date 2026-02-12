@@ -21,7 +21,7 @@ public class Main {
         String[] jackCardType = {"Jack", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Queen", "King", "Ace"};
         String[] cardType = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
         int[] numOfEachType = {0, 0, 0, 0, 0, 0, 0};
-        System.out.println(fileData);
+
         String[] lines = fileData.split("\n");
         Hand[] allHand = new Hand[lines.length];
         int[] power = new int[lines.length];
@@ -41,12 +41,12 @@ public class Main {
             numOfEachType[handResult-1] = numOfEachType[handResult-1] + 1;
         }
         System.out.println("Number of five of a kind hands: " + numOfEachType[6]);
-        System.out.println("Number of full houses: " + numOfEachType[4]);
+        System.out.println("Number of full house hands: " + numOfEachType[4]);
         System.out.println("Number of four of a kind hands: " + numOfEachType[5]);
         System.out.println("Number of three of a kind hands: " + numOfEachType[3]);
-        System.out.println("Number of two pairs: " + numOfEachType[2]);
-        System.out.println("Number of one pairs: " + numOfEachType[1]);
-        System.out.println("Number of high cards: " + numOfEachType[0]);
+        System.out.println("Number of two pair hands: " + numOfEachType[2]);
+        System.out.println("Number of one pair hands: " + numOfEachType[1]);
+        System.out.println("Number of high card hands: " + numOfEachType[0]);
 
         for (int z = 0; z < 2; z++) {
             for (int i = 0; i < lines.length; i++) {
@@ -100,7 +100,6 @@ public class Main {
                 }
                 System.out.println("Total Bid Value With Jacks Wild: " + jackBidResult);
             }
-
         }
     }
 }
